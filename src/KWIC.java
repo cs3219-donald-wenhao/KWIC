@@ -1,4 +1,4 @@
-import java.util.Scanner;;
+import java.util.Scanner;
 
 public class KWIC {
 	public static void main(String args[]){
@@ -7,7 +7,7 @@ public class KWIC {
 	}
 	
 	private void choose_Design(){
-		System.out.println("Key in 1 for Implicit Invocation/ 2 for Pipes and Filters");
+		System.out.println("Key in '1' for Implicit Invocation/ '2' for Pipes and Filters");
 		
 		//open scanner to read option
 		Scanner scan = new Scanner(System.in);
@@ -15,7 +15,6 @@ public class KWIC {
 		
 		switch (input){
 			case(1):
-				System.out.println("You have chosen option Implicit Invocation");
 				ImplicitInvocation design = new ImplicitInvocation();
 				design.launch();
 				break;
