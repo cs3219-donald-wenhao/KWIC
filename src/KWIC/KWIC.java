@@ -9,14 +9,14 @@ public class KWIC {
 
 	private static final String MSG_WELCOME = "Welcome to KWIC!";
 	private static final String MSG_ERROR = "Invalid number of arguments provided! Usage: java KWIC.java input.txt ignore.txt output.txt";
-	private static final String MSG_FILECHECK = "Checking files..";
-	private static final String MSG_FILECHECK_SUCCESS = "Input file: %s1\nIgnore file: %s2\nOutput file: %s3\nFiles check successful!";
+	private static final String MSG_FILECHECK = "Checking files..\n";
+	private static final String MSG_FILECHECK_SUCCESS = "Input file: %1s\nIgnore file: %2s\nOutput file: %3s\nFiles check successful!\n";
 	private static final String MSG_FILECHECK_FAIL = "\"%s\" does not exist! Please refer to README.md for further clarifications!";
 	private static final String MSG_QNS = "Please choose which design to run the program with\n1. Implicit Invocation\n2. Pipes and Filters";
 	private static final String MSG_PROMPT = "Your choice (enter 1 or 2): ";
 	private static final String MSG_II = "You have chosen option Implicit Invocation";
 	private static final String MSG_PNF = "You have chosen option Pipes and Filters";
-	private static final String MSG_INVALID = "You have entered an invalid option, please choose between 1 or 2: ";
+	private static final String MSG_INVALID = "You have entered an invalid option, please choose between 1 and 2: ";
 
 	public static void main(String args[]) {
 		
@@ -54,22 +54,28 @@ public class KWIC {
 		// open scanner to read option
 		Scanner scan = new Scanner(System.in);
 		
+		System.out.print(MSG_PROMPT);
+		
 		while (true) {
+	
 			int input = scan.nextInt();
 
 			switch (input) {
+			
 			case (1):
 				System.out.println(MSG_II);
 				// ImplicitInvocation design = new ImplicitInvocation();
 				// design.launch();
 				scan.close();
-				break;
+				System.exit(0);
+				
 			case (2):
 				System.out.println(MSG_PNF);
 				PipesAndFilters design = new PipesAndFilters(inputFileName, ignoreFileName, outputFileName);
 				design.launch();
 				scan.close();
-				break;
+				System.exit(0);
+				
 			default:
 				System.out.print(MSG_INVALID);
 			}
