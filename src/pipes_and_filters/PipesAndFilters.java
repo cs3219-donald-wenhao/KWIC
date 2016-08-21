@@ -39,11 +39,7 @@ public class PipesAndFilters {
 			
 			Collections.sort(shiftedLines);
 			
-			writer.write(outputFileName);
-			
-			for (int i = 0; i < shiftedLines.size(); i++) {
-				System.out.println(shiftedLines.get(i));
-			}
+			writer.write(outputFileName, shiftedLines);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
