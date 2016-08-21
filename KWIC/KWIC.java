@@ -1,4 +1,4 @@
-package implicit_invocation;
+package KWIC;
 import java.util.Scanner;
 
 public class KWIC {
@@ -16,8 +16,8 @@ public class KWIC {
 		
 		switch (input){
 			case(1):
-				ImplicitInvocation design = new ImplicitInvocation();
-				design.launch();
+				//ImplicitInvocation design = new ImplicitInvocation();
+				//design.launch();
 				break;
 			case(2):
 				System.out.println("You have chosen option Pipes and Filters");
