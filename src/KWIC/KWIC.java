@@ -1,6 +1,7 @@
 package KWIC;
 
 import java.io.File;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import pipes_and_filters.PipesAndFilters;
@@ -19,24 +20,24 @@ public class KWIC {
 	private static final String MSG_INVALID = "You have entered an invalid option, please choose between 1 and 2: ";
 
 	public static void main(String args[]) {
-		
+
 		System.out.println(MSG_WELCOME);
 		System.out.println(MSG_FILECHECK);
-		
+
 		if (args.length != 3) {
 			System.out.println(MSG_ERROR);
 			System.exit(0);
 		}
-		
+
 		checkFiles(args[0], args[1], args[2]);
 		KWIC active = new KWIC();
 		active.choose_Design(args[0], args[1], args[2]);
 	}
 
 	private static void checkFiles(String inputFileName, String ignoreFileName, String outputFileName) {
-		File input = new File (inputFileName);
+		File input = new File(inputFileName);
 		File ignore = new File(ignoreFileName);
-		
+
 		if (!input.exists()) {
 			System.out.println(String.format(MSG_FILECHECK_FAIL, inputFileName));
 			System.exit(0);
@@ -47,35 +48,35 @@ public class KWIC {
 			System.out.println(String.format(MSG_FILECHECK_SUCCESS, inputFileName, ignoreFileName, outputFileName));
 		}
 	}
-	
+
 	private void choose_Design(String inputFileName, String ignoreFileName, String outputFileName) {
 		System.out.println(MSG_QNS);
 
 		// open scanner to read option
 		Scanner scan = new Scanner(System.in);
-		
+
 		System.out.print(MSG_PROMPT);
-		
+
 		while (true) {
-	
-			int input = scan.nextInt();
+
+			String input = scan.nextLine();
 
 			switch (input) {
-			
-			case (1):
+
+			case ("1"):
 				System.out.println(MSG_II);
 				// ImplicitInvocation design = new ImplicitInvocation();
 				// design.launch();
 				scan.close();
 				System.exit(0);
-				
-			case (2):
+
+			case ("2"):
 				System.out.println(MSG_PNF);
 				PipesAndFilters design = new PipesAndFilters(inputFileName, ignoreFileName, outputFileName);
 				design.launch();
 				scan.close();
 				System.exit(0);
-				
+
 			default:
 				System.out.print(MSG_INVALID);
 			}
