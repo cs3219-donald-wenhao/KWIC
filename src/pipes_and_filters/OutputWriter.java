@@ -12,7 +12,7 @@ public class OutputWriter {
 		
 	}
 	
-	public void write(String fileName) throws IOException {
+	public void write(String fileName, ArrayList<String> output) throws IOException {
 		
 		File file = new File(fileName);
 		FileWriter fout = new FileWriter(file);
@@ -21,11 +21,6 @@ public class OutputWriter {
 		if (!file.exists()) {
 			file.createNewFile();
 		}
-		
-		ArrayList<String> output = new ArrayList<String>();
-		output.add("loves");
-		output.add("lovesdf");
-		output.add("gasfgsdfhi");
 		
 		for (int i = 0; i < output.size(); i++) {
 			bout.write(output.get(i)+"\n");
