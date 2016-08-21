@@ -26,6 +26,8 @@ public class OutputWriter {
 			bout.write(output.get(i)+"\n");
 		}
 		
+		System.out.println("Output generated!");
+		
 		fout.flush();
 		bout.flush();
 
