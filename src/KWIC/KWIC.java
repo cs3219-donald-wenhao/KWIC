@@ -1,7 +1,6 @@
 package KWIC;
 
 import java.io.File;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import pipes_and_filters.PipesAndFilters;
