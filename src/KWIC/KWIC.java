@@ -3,6 +3,7 @@ package KWIC;
 import java.io.File;
 import java.util.Scanner;
 
+import Implicit_Invocation.Master;
 import pipes_and_filters.PipesAndFilters;
 
 public class KWIC {
@@ -64,15 +65,15 @@ public class KWIC {
 
 			case ("1"):
 				System.out.println(MSG_II);
-				// ImplicitInvocation design = new ImplicitInvocation();
-				// design.launch();
+				Master impInvDesign = new Master();
+				impInvDesign.launch();
 				scan.close();
 				System.exit(0);
 
 			case ("2"):
 				System.out.println(MSG_PNF);
-				PipesAndFilters design = new PipesAndFilters(inputFileName, ignoreFileName, outputFileName);
-				design.launch();
+				PipesAndFilters pipesDesign = new PipesAndFilters(inputFileName, ignoreFileName, outputFileName);
+				pipesDesign.launch();
 				scan.close();
 				System.exit(0);
 
