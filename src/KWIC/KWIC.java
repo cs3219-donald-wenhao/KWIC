@@ -65,7 +65,7 @@ public class KWIC {
 
 			case ("1"):
 				System.out.println(MSG_II);
-				Master impInvDesign = new Master();
+				Master impInvDesign = new Master(inputFileName, ignoreFileName, outputFileName);
 				impInvDesign.launch();
 				scan.close();
 				System.exit(0);
