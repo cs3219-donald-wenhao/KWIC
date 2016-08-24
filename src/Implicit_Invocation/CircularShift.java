@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 //send each shifter line to alphabetizer
 public class CircularShift {
 	public String line;
-	public boolean[] keywordPos;
+	private boolean[] keywordPos;
 	
 	public CircularShift(String line){
 		this.line = line;
@@ -31,7 +31,7 @@ public class CircularShift {
 	}
 	
 	//shifts the word position by one in the line
-	public String shift(){
+	private String shift(){
 		StringTokenizer tokenizer = new StringTokenizer(this.line);
 		String first = tokenizer.nextToken();
 		String newLine = "";
@@ -43,7 +43,7 @@ public class CircularShift {
 	}
 	
 	//fills up keywordPos with a list of positions of the keywords
-	public void numKeywords(Queue<String> ignoreWords){
+	private void numKeywords(Queue<String> ignoreWords){
 		int count = 0;
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		this.keywordPos = new boolean[tokenizer.countTokens()];
@@ -58,7 +58,7 @@ public class CircularShift {
 	}
 	
 	//check word is a keyword
-	public boolean isKeyword(Queue<String> ignore, String word){
+	private boolean isKeyword(Queue<String> ignore, String word){
 		Boolean keyword = true;
 		Queue<String> Q = new LinkedList<String>(ignore);
 		while(!Q.isEmpty()){

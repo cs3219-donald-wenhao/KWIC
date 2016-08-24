@@ -59,7 +59,7 @@ public class InputReader {
 	}
 	
 	//activate to fill up ArrayList sortedReady
-	public ArrayList<String> activate(){
+/*	public ArrayList<String> activate(){
 		
-	}
+	}*/
 }
