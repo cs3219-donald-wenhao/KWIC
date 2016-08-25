@@ -19,24 +19,17 @@ public class Master{
 
 	public void launch(){
 		InputReader input = new InputReader();
-		
+		OutputWriter output = new OutputWriter();
 		
 		try{
 			//reads input and ignore files and store them in arraylist
 			input.readIgnore(ignoreFile);
 			input.readText(inputFile);
+			input.sortedReady = input.produceOutput();
+
 			
-			//processing the input into circular list line by line ****belong to inputReader***
-/*			while(!input.inputList.isEmpty()){
-				CircularShift shift = new CircularShift(input.inputList.get(0));
-				//shift.activate();
-				
-				input.inputList.remove(0);
-			}
-*/			
-			//***** Test Functions
-			System.out.println("Done");
-			//******
+			output.write(outputFile, input.sortedReady);
+
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

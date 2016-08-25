@@ -10,16 +10,15 @@ public class OutputWriter {
 	
 	public ArrayList<String> ready;
 	
-	public OutputWriter(ArrayList<String> readyList) {
-		this.ready = readyList;
+	public OutputWriter() {
 	}
 	
-	public void write(String fileName) throws IOException {
+	public void write(String fileName, ArrayList<String> list) throws IOException {
 		
 		File file = new File(fileName);
 		FileWriter fout = new FileWriter(file);
 		BufferedWriter bout = new BufferedWriter(fout);
-
+		this.ready = list;
 		if (!file.exists()) {
 			file.createNewFile();
 		}
