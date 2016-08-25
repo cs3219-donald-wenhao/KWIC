@@ -17,18 +17,20 @@ public class CircularShift {
 	}
 	
 	//returns an ArrayList of all shifted keyword headings of that input line
-	public ArrayList<String> activate(String oneLine, ArrayList<String> ready){
+	public ArrayList<String> runCShift(String oneLine, ArrayList<String> sortedList){
 		numKeywords(oneLine);
-		Alphabetize a = new Alphabetize();
+		Alphabetize sort = new Alphabetize();
 		//loop through all words of that line and store the line in the new arraylist
 		for(int i=0;i<keywordPos.length;i++){
 			if(keywordPos[i]){
-				ready.add(oneLine);
-				ready = a.activate(ready);
+				//add new line into arraylist
+				sortedList.add(oneLine);
+				//sort arraylist
+				sortedList = sort.runAlpha(sortedList);
 			}
 			oneLine = shift(oneLine);
 		}
-		return ready;
+		return sortedList;
 	}
 	
 	//shifts the word position by one in the line

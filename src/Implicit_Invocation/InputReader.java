@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class InputReader {
-	
+	//**Attributes
 	//list of words to ignore
 	public Queue<String> ignore	= new LinkedList<String>();
 	
@@ -16,10 +16,11 @@ public class InputReader {
 	public ArrayList<String> inputList = new ArrayList<String>();
 	
 	//list of lines ready for output
-	public ArrayList<String> sortedReady = new ArrayList<String>();
+	ArrayList<String> sortedReady = new ArrayList<String>();
 	
-	//read ignore file and stores each word in array ignore
-	public void readIgnore(String fileName) throws IOException {
+	//**Methods
+	//read ignore file and stores each word in Queue ignore
+	void readIgnore(String fileName) throws IOException {
 		FileReader fin = new FileReader(fileName);
 		BufferedReader bin = new BufferedReader(fin);
 		
@@ -38,12 +39,11 @@ public class InputReader {
 		bin.close();
 	}
 	
-	//reads input file and stores each word in ArrayList input
-	public void readText(String fileName) throws IOException {
+	//reads input file and stores each line in ArrayList input
+	void readText(String fileName) throws IOException {
 		FileReader fin = new FileReader(fileName);
 		BufferedReader bin = new BufferedReader(fin);
 		
-		inputList = new ArrayList<String>();
 		String line;
 		while( (line = bin.readLine()) != null) {
 			if (line.length() == 0) {
@@ -59,7 +59,11 @@ public class InputReader {
 	}
 	
 	//activate to fill up ArrayList sortedReady
-/*	public ArrayList<String> activate(){
-		
-	}*/
+	ArrayList<String> produceOutput(){
+		CircularShift cShift = new CircularShift(this.ignore);
+		for(int i=0; i<this.inputList.size();i++){
+			this.sortedReady = cShift.runCShift(this.inputList.get(i), this.sortedReady);
+		}
+		return this.sortedReady;
+	}
 }

@@ -10,7 +10,7 @@ public class Alphabetize {
 	}
 	
 	//takes in the ArrayList to be sorted as parameter
-	public ArrayList<String> activate(ArrayList<String> sorting){
+	public ArrayList<String> runAlpha(ArrayList<String> sorting){
 		Collections.sort(sorting, new StringCompare());
 		return sorting;
 	}
