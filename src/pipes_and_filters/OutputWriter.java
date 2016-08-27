@@ -8,10 +8,20 @@ import java.util.ArrayList;
 
 public class OutputWriter {
 
+	/**
+	 * Empty constructor
+	 */
 	public OutputWriter() {
 		
 	}
 	
+	/**
+	 * Method to write Strings from output into the specified output file
+	 * 
+	 * @param fileName
+	 * @param output
+	 * @throws IOException
+	 */
 	public void write(String fileName, ArrayList<String> output) throws IOException {
 		
 		File file = new File(fileName);

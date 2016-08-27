@@ -5,6 +5,9 @@ import java.util.StringTokenizer;
 
 public class Alphabetizer {
 
+	/**
+	 * Empty constructor
+	 */
 	public Alphabetizer() {
 
 	}
@@ -28,6 +31,12 @@ public class Alphabetizer {
 		return strTokens;
 	}
 
+	/**
+	 * Method concatenate the tokens back to a string.
+	 * 
+	 * @param tokens
+	 * @return
+	 */
 	private static String concatenateTokens(ArrayList<String> tokens) {
 
 		String result = "";
@@ -40,6 +49,13 @@ public class Alphabetizer {
 
 	}
 
+	/**
+	 * Alphabetize all the ignored words to lower case
+	 * 
+	 * @param ignoreList
+	 * @param input
+	 * @return
+	 */
 	public String alphabetize(ArrayList<String> ignoreList, String input) {
 
 		ArrayList<String> tokens = tokenize(input);

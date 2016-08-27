@@ -7,6 +7,9 @@ import java.util.StringTokenizer;
 
 public class CircularShift {
 	
+	/**
+	 * Empty constructor
+	 */
 	public CircularShift() {
 		
 	}
@@ -30,6 +33,12 @@ public class CircularShift {
 		return strTokens;
 	}
 	
+	/**
+	 * Method to concatenate the tokens back to a string.
+	 * 
+	 * @param tokens
+	 * @return
+	 */
 	private static String concatenateTokens(Queue<String> tokens) {
 		
 		String result = "";
@@ -45,6 +54,14 @@ public class CircularShift {
 		
 	}
 	
+	/**
+	 * Method to generate all the combinations of one line by shifting the first word of a string to the end of the string.
+	 * If the first word of the line is an ignored word, then that line will be ignored and not added to output.
+	 * 
+	 * @param ignoreList
+	 * @param tokens
+	 * @return
+	 */
 	private static ArrayList<String> shiftOneLine(ArrayList<String> ignoreList, Queue<String> tokens) {
 		
 		ArrayList<String> shiftedLines = new ArrayList<String>();
@@ -62,9 +79,11 @@ public class CircularShift {
 	}
 	
 	/**
-	 * Method to shift the first words to the back
+	 * Method to shift all the lines given by using the previous shiftOneLine method
 	 * 
-	 * @param 
+	 * @param ignoreList
+	 * @param input
+	 * @return
 	 */
 	public ArrayList<String> shift(ArrayList<String> ignoreList, ArrayList<String> input) {
 		

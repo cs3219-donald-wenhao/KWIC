@@ -7,10 +7,20 @@ import java.util.ArrayList;
 
 public class InputReader {
 	
+	/**
+	 * Empty Constructor
+	 */
 	public InputReader() {
 
 	}
 	
+	/**
+	 * Method to read the file
+	 * 
+	 * @param fileName
+	 * @return an array list containing the lines of the specified input file
+	 * @throws IOException
+	 */
 	public ArrayList<String> read(String fileName) throws IOException {
 		
 		FileReader fin = new FileReader(fileName);
