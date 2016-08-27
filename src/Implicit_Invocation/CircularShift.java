@@ -65,7 +65,7 @@ public class CircularShift {
 		Boolean keyword = true;
 		Queue<String> Q = new LinkedList<String>(ignore);
 		while(!Q.isEmpty()){
-			if(Q.poll().equals(word)){
+			if(Q.poll().toUpperCase().equals(word.toUpperCase())){
 				keyword = false;
 			}
 		}
