@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Scanner;
 
 import Implicit_Invocation.Master;
-import pipes_and_filters.PipesAndFilters;
+import pipes_and_filters.Pipe;
 
 public class KWIC {
 
@@ -72,7 +72,7 @@ public class KWIC {
 
 			case ("2"):
 				System.out.println(MSG_PNF);
-				PipesAndFilters pipesDesign = new PipesAndFilters(inputFileName, ignoreFileName, outputFileName);
+				Pipe pipesDesign = new Pipe(inputFileName, ignoreFileName, outputFileName);
 				pipesDesign.launch();
 				scan.close();
 				System.exit(0);
