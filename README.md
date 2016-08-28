@@ -1,6 +1,4 @@
-<snippet>
-  <content><![CDATA[
-# ${1:KWIC (Key Word in Context)}
+#KWIC (Key Word in Context)
 
 The Key Word in Context (KWIC) index system is a text processor that reads a string of text and circularly shifts the words in the sentence or phrase. Along this circular shifting process, strings with a keyword as the starting word will be recorded and appended into a collection of texts. This collection of texts is then sorted out alphabetically and is generated out as the output of the system. The KWIC is able to take in multiple lines of texts and collect all the shifted lines into a single output all together.
 
@@ -21,7 +19,3 @@ In this assignment, we have chosen two architectural designs, namely Implicit In
 
 Donald Shum (A0121823R)
 Lau Wen Hao (A0121528M)
-
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
