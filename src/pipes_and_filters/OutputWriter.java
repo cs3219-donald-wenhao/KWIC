@@ -36,7 +36,7 @@ public class OutputWriter {
 			bout.write(output.get(i)+"\n");
 		}
 		
-		System.out.println("Output generated!");
+		System.out.println("Output generated as \"" + fileName + "\" in the same location as the application");
 		
 		fout.flush();
 		bout.flush();
