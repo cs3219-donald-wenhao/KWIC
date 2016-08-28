@@ -1,47 +1,43 @@
 package pipes_and_filters;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.InputStreamReader;
 
-public class InputReader {
+public class InputReader extends Filter{
+	
+	private InputStreamReader fin;
+	private BufferedReader bin;
 	
 	/**
-	 * Empty Constructor
+	 * Constructor
 	 */
-	public InputReader() {
-
+	public InputReader(String fileName) throws FileNotFoundException {
+		fin = new FileReader(fileName);
+		bin = new BufferedReader(fin);
 	}
 	
 	/**
-	 * Method to read the file
-	 * 
-	 * @param fileName
-	 * @return an array list containing the lines of the specified input file
-	 * @throws IOException
+	 * Method to run this filter. Reads from file and write to pipe
 	 */
-	public ArrayList<String> read(String fileName) throws IOException {
-		
-		FileReader fin = new FileReader(fileName);
-		BufferedReader bin = new BufferedReader(fin);
-		
-		ArrayList<String> input = new ArrayList<String>();
+	public void run() {
 		String line;
-		while( (line = bin.readLine()) != null) {
-			if (line.length() == 0) {
-				// reach a new line => end of input
-				break;
-			} else {
-				input.add(line);
+		try {
+			while(true) {
+				line = bin.readLine();
+				if (line == null) {
+					write(null);
+
+					break;
+				} else {
+					write(line);	
+				}
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
-		fin.close();
-		bin.close();
-		
-		return input;
-		
 	}
 	
 }

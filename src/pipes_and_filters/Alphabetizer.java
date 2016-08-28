@@ -1,17 +1,12 @@
 package pipes_and_filters;
 
+import java.io.EOFException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Alphabetizer {
-
-	/**
-	 * Empty constructor
-	 */
-	public Alphabetizer() {
-
-	}
-
+public class Alphabetizer extends Filter {
+	
 	/**
 	 * Method to tokenize String according to space.
 	 * 
@@ -56,19 +51,39 @@ public class Alphabetizer {
 	 * @param input
 	 * @return
 	 */
-	public String alphabetize(ArrayList<String> ignoreList, String input) {
+	public String alphabetize(String[] ignoreList, String input) {
 
 		ArrayList<String> tokens = tokenize(input);
 			
 		for (int i = 0; i < tokens.size(); i++) {
 			String currentToken = tokens.get(i);
-			if (ignoreList.contains(currentToken.toLowerCase())) {
+			if (Arrays.asList(ignoreList).contains(currentToken.toLowerCase())) {
 				tokens.set(i, currentToken.toLowerCase());
 			}
 		}
 		
 		String result = concatenateTokens(tokens);
 		return result;
+	}
+
+	/**
+	 * Method to run this filter. Reads from pipe, alphabetize, and writes to next pipe.
+	 */
+	public void run() {
+
+		while (true) {
+
+			try {
+				String input = read();
+				String output = alphabetize(ignoreList, input);
+				write(output);
+				
+			} catch (EOFException e) {
+
+				write(null);
+				break;
+			}
+		}
 	}
 
 }

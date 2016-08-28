@@ -1,18 +1,13 @@
 package pipes_and_filters;
 
-import java.util.ArrayList;
+import java.io.EOFException;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class CircularShift {
+public class CircularShift extends Filter{
 	
-	/**
-	 * Empty constructor
-	 */
-	public CircularShift() {
-		
-	}
 	
 	/**
 	 * Method to tokenize String according to space.
@@ -53,50 +48,33 @@ public class CircularShift {
 		return result.trim();
 		
 	}
-	
+
 	/**
-	 * Method to generate all the combinations of one line by shifting the first word of a string to the end of the string.
-	 * If the first word of the line is an ignored word, then that line will be ignored and not added to output.
-	 * 
-	 * @param ignoreList
-	 * @param tokens
-	 * @return
+	 * Method to run this filter. Reads from pipe, do circular shifting, and writes to the next pipe.
 	 */
-	private static ArrayList<String> shiftOneLine(ArrayList<String> ignoreList, Queue<String> tokens) {
+	public void run() {
 		
-		ArrayList<String> shiftedLines = new ArrayList<String>();
-		
-		for (int i = 0; i < tokens.size(); i++) {
-			String toAdd = tokens.remove();
-			tokens.add(toAdd);
+		while (true) {
 			
-			if (!ignoreList.contains(tokens.peek())) {
-				shiftedLines.add(concatenateTokens(tokens));
+			try {
+				String input = read();
+				Queue<String> tokens = tokenize(input);
+				for (int i = 0; i < tokens.size(); i++) {
+					String toAdd = tokens.remove();
+					tokens.add(toAdd);
+					
+					if (!Arrays.asList(ignoreList).contains(tokens.peek())) {
+						write(concatenateTokens(tokens));
+					}
+				}
+				
+			} catch (EOFException e) {
+				out.close();
+				break;
 			}
 		}
+
 		
-		return shiftedLines;
-	}
-	
-	/**
-	 * Method to shift all the lines given by using the previous shiftOneLine method
-	 * 
-	 * @param ignoreList
-	 * @param input
-	 * @return
-	 */
-	public ArrayList<String> shift(ArrayList<String> ignoreList, ArrayList<String> input) {
-		
-		ArrayList<String> shiftedLines = new ArrayList<String>();
-		
-		for (int i = 0; i < input.size(); i++) {
-			String currentLine = input.get(i);
-			Queue<String> tokens = tokenize(currentLine); 
-			ArrayList<String> shiftedCurentLine = shiftOneLine(ignoreList, tokens);
-			shiftedLines.addAll(shiftedCurentLine);	
-		}
-		
-		return shiftedLines;
 	}
 	
 }

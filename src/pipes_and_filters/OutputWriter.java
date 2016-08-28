@@ -1,49 +1,61 @@
 package pipes_and_filters;
 
 import java.io.BufferedWriter;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class OutputWriter {
+public class OutputWriter extends Filter {
 
-	/**
-	 * Empty constructor
-	 */
-	public OutputWriter() {
-		
-	}
+	private File file;
+	private FileWriter fout;
+	private BufferedWriter bout;
+	
 	
 	/**
-	 * Method to write Strings from output into the specified output file
-	 * 
-	 * @param fileName
-	 * @param output
-	 * @throws IOException
+	 * Constructor
 	 */
-	public void write(String fileName, ArrayList<String> output) throws IOException {
-		
-		File file = new File(fileName);
-		FileWriter fout = new FileWriter(file);
-		BufferedWriter bout = new BufferedWriter(fout);
+	public OutputWriter(String fileName) {
+		try {
+			file = new File(fileName);
+			fout = new FileWriter(file);
+			bout = new BufferedWriter(fout);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-		if (!file.exists()) {
-			file.createNewFile();
+	/**
+	 * Method to run this filter. Reads from pipe and writes to output file.
+	 */
+	public void run() {
+		
+		while (true) {
+
+			try {
+				String input = read();
+				bout.write(input + "\n");
+			} catch (EOFException e) {
+				try {
+					fout.flush();
+					bout.flush();
+					
+					fout.close();
+					bout.close();
+					break;
+				} catch (IOException err) {
+					err.printStackTrace();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
-		for (int i = 0; i < output.size(); i++) {
-			bout.write(output.get(i)+"\n");
-		}
+		System.out.println("Output generated as \"" + file.getName() + "\" in the same location as the application");
 		
-		System.out.println("Output generated as \"" + fileName + "\" in the same location as the application");
 		
-		fout.flush();
-		bout.flush();
-
-		fout.close();
-		bout.close();
-
 	}
 
 }
