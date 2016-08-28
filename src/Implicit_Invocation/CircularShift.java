@@ -12,12 +12,12 @@ public class CircularShift {
 	private Queue<String> ignore;
 	private boolean[] keywordPos;
 	
-	public CircularShift(Queue<String> ignore){
+	CircularShift(Queue<String> ignore){
 		this.ignore = ignore;
 	}
 	
 	//returns an ArrayList of all shifted keyword headings of that input line
-	public ArrayList<String> runCShift(String oneLine, ArrayList<String> sortedList){
+	ArrayList<String> runCShift(String oneLine, ArrayList<String> sortedList){
 		numKeywords(oneLine);
 		Alphabetize sort = new Alphabetize();
 		//loop through all words of that line and store the line in the new arraylist

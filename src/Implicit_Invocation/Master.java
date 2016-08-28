@@ -1,7 +1,6 @@
 package Implicit_Invocation;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Master{
 	

@@ -10,10 +10,10 @@ import java.util.Queue;
 public class InputReader {
 	//**Attributes
 	//list of words to ignore
-	public Queue<String> ignore	= new LinkedList<String>();
+	private Queue<String> ignore	= new LinkedList<String>();
 	
 	//list of input lines
-	public ArrayList<String> inputList = new ArrayList<String>();
+	private ArrayList<String> inputList = new ArrayList<String>();
 	
 	//list of lines ready for output
 	ArrayList<String> sortedReady = new ArrayList<String>();
