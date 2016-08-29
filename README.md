@@ -11,8 +11,8 @@ In this assignment, we have chosen two architectural designs, namely Implicit In
 3. Copy and paste your input and ignore files into the extracted folder (make sure the input and ignore files are in the same directory as the KWIC.jar file)
 4. In cmd(windows) or terminal(linux), change directory into the extracted
 5. Run the following command "java -jar KWIC.jar"
-6. Input the input and ignore file names, and the desired output file name
-7. Choose the architechtural design (1 for Implicit Invocation, 2 for Pipes and Filters)
+6. Choose the architechtural design (1 for Implicit Invocation, 2 for Pipes and Filters)
+7. Input the input and ignore file names, and the desired output file name
 8. Observe output :)
 
 ## Credits
