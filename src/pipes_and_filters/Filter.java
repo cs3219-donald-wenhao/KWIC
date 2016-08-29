@@ -56,8 +56,6 @@ public abstract class Filter {
 	/**
 	 * Method to be implemented by the respective filters
 	 */
-	public void run() {
-		
-	}
+	public abstract void run();
 	
 }
