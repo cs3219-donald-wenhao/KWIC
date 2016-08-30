@@ -19,16 +19,24 @@ public class CircularShift {
 	//returns an ArrayList of all shifted keyword headings of that input line
 	ArrayList<String> runCShift(String oneLine, ArrayList<String> sortedList){
 		numKeywords(oneLine);
+		oneLine = caseChange(oneLine);
 		Alphabetize sort = new Alphabetize();
 		//loop through all words of that line and store the line in the new arraylist
-		for(int i=0;i<keywordPos.length;i++){
+		for(int i=1;i<keywordPos.length;i++){
+			oneLine = shift(oneLine);
 			if(keywordPos[i]){
 				//add new line into arraylist
 				sortedList.add(oneLine);
 				//sort arraylist
 				sortedList = sort.runAlpha(sortedList);
 			}
-			oneLine = shift(oneLine);
+		}
+		oneLine = shift(oneLine);
+		if(keywordPos[0]){
+			//add new line into arraylist
+			sortedList.add(oneLine);
+			//sort arraylist
+			sortedList = sort.runAlpha(sortedList);			
 		}
 		return sortedList;
 	}
@@ -59,6 +67,29 @@ public class CircularShift {
 			count++;
 		}
 	}
+	
+	//capitalise keywords and uncapitalise non keywords
+	private String caseChange(String line){
+		StringTokenizer tokenizer = new StringTokenizer(line);
+		String first = tokenizer.nextToken();
+		String newLine;
+		if(this.keywordPos[0]){
+			newLine = first;
+		} else {
+			newLine = first.toLowerCase();
+		}
+		int pos = 1;
+		while(tokenizer.hasMoreTokens()){
+			if(this.keywordPos[pos]){
+				newLine = newLine + " " + tokenizer.nextToken();
+			}else {
+			newLine = newLine + " " + tokenizer.nextToken().toLowerCase(); 
+			}
+			pos++;
+		}
+		return newLine;
+	}
+	
 	
 	//check word is a keyword
 	private boolean isKeyword(Queue<String> ignore, String word){
