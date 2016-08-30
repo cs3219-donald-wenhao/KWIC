@@ -8,8 +8,8 @@ import java.util.Scanner;
 import Implicit_Invocation.Master;
 import pipes_and_filters.Alphabetizer;
 import pipes_and_filters.CircularShift;
-import pipes_and_filters.InputReader;
-import pipes_and_filters.OutputWriter;
+import pipes_and_filters.DataSource;
+import pipes_and_filters.Sink;
 import pipes_and_filters.Pipeline;
 import pipes_and_filters.Sorter;
 
@@ -155,11 +155,11 @@ public class KWIC {
 					
 					this.checkFiles(inputFileName);
 					
-					Pipeline pipesDesign = new Pipeline(new InputReader(inputFileName), 
+					Pipeline pipesDesign = new Pipeline(new DataSource(inputFileName), 
 							new Alphabetizer(), 
 							new CircularShift(), 
 							new Sorter(),
-							new OutputWriter(outputFileName));
+							new Sink(outputFileName));
 					
 					pipesDesign.run();
 					scan.close();

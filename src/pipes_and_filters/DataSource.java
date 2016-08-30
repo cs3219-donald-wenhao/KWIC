@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class InputReader extends Filter{
+public class DataSource extends Filter{
 	
 	private InputStreamReader fin;
 	private BufferedReader bin;
@@ -14,7 +14,7 @@ public class InputReader extends Filter{
 	/**
 	 * Constructor
 	 */
-	public InputReader(String fileName) throws FileNotFoundException {
+	public DataSource(String fileName) throws FileNotFoundException {
 		fin = new FileReader(fileName);
 		bin = new BufferedReader(fin);
 	}

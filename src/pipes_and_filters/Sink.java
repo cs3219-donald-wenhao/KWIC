@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class OutputWriter extends Filter {
+public class Sink extends Filter {
 
 	private File file;
 	private FileWriter fout;
@@ -16,7 +16,7 @@ public class OutputWriter extends Filter {
 	/**
 	 * Constructor
 	 */
-	public OutputWriter(String fileName) {
+	public Sink(String fileName) {
 		try {
 			file = new File(fileName);
 			fout = new FileWriter(file);
